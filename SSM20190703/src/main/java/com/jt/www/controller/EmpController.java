@@ -90,6 +90,7 @@ public class EmpController {
 		  if(e.getEmpno()!=null){
 			  throw new Exception();
 		  }
+		  System.out.println("test_git");
 	//	dao.insert(e);
 	  }
 }

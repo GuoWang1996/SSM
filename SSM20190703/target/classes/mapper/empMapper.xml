@@ -1,0 +1,24 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jt.www.dao.EmpDao">
+
+    <select id="findAllEmp" resultType="com.jt.www.entity.Emp">
+        select * from emp
+    </select>
+    <delete id="deleteEmp" parameterType="int">
+        delete from emp where empno=#{empno}
+    </delete>
+    <select id="toUpdate" resultType="com.jt.www.entity.Emp">
+        select * from emp where empno=#{empno}
+    </select>
+
+    <insert id="insertEmp">
+        <selectKey resultType="int" keyProperty="empno" order="BEFORE">
+            select seq_emp.nextval from dual
+        </selectKey>
+        insert into emp(empno,ename,job,mgr,sal,comm,deptno) VALUES(#{empno},#{ename},#{job},#{mgr},#{sal},#{comm},#{deptno})
+    </insert>
+    <update id="updateEmp">
+        update emp set ename=#{ename},job=#{job},mgr=#{mgr},sal=#{sal},comm=#{comm},deptno=#{deptno} where empno=#{empno}
+    </update>
+</mapper>
